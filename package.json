@@ -24,12 +24,17 @@
 		"gulp-cssnano": "^2.1.3",
 		"gulp-concat-css": "^3.1.0",
 		"gulp-clean": "^0.4.0",
+		"@wordpress/scripts": "*",
 		"gulp-rename": "^2.0.0"
 	},
 	"scripts": {
 		"lint:css": "stylelint **/*.css",
 		"lint-fix:css": "stylelint **/*.css --fix",
 		"lint:js": "eslint .",
-		"lint-fix:js": "eslint --fix ."
+		"lint-fix:js": "eslint --fix .",
+		"start": "wp-scripts start src/index.js our-blocks/banner.js",
+		"dev": "wp-scripts start",
+		"devFast": "wp-scripts start",
+		"test": "echo \"Error: no test specified\" && exit 1"
 	}
 }

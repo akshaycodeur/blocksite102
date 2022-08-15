@@ -19,8 +19,10 @@ define( 'BLOCKSITE102_VERSION', wp_get_theme()->get( 'Version' ) );
  * Add theme support.
  */
 function blocksite102_setup() {
+	
+	add_theme_support( 'editor-styles' );
 	add_theme_support( 'wp-block-styles' );
-	add_editor_style( './assets/css/style-shared.min.css' );
+	add_editor_style( array('./assets/css/style-shared.min.css','./assets/css/ash-custom.css') );
 
 	/*
 	 * Load additional block styles.
@@ -67,3 +69,13 @@ require_once get_theme_file_path( 'inc/register-block-styles.php' );
 
 // Block pattern helper for the privacy policy.
 require_once get_theme_file_path( 'inc/block-pattern-helper.php' );
+
+
+function bannerBlock() {
+	wp_register_script('bannerBlockScript', get_stylesheet_directory_uri() . '/build/banner.js', array('wp-blocks', 'wp-editor'));
+	register_block_type("ourblocktheme/banner", array(
+	  'editor_script' => 'bannerBlockScript'
+	));
+  }
+  
+  add_action('init', 'bannerBlock');
